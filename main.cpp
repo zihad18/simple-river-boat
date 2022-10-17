@@ -1,6 +1,7 @@
 #include<windows.h>
 #include <GL/glut.h>
 using namespace std;
+bool forwar=true;
 bool pause=false;
 int posx = 0;
 void init(void)
@@ -136,11 +137,20 @@ void update(int value) {
     if(pause==false){
     if(posx>=22)
     {
-        posx=0;
+       forwar=false;
+       // posx=0;
+    }
+    if(posx<=-3)
+    {
+        forwar=true;
+    }
+    if(forwar){
+        posx++;
     }
     else{
-        posx++;
-    }}
+        posx--;
+    }
+    }
     glutPostRedisplay();
 	glutTimerFunc(250, update, 0);
 }
